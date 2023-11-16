@@ -1,43 +1,77 @@
 /*
-*   Name:
-*   Section:
+*   Name: Audrey Tan
+*   Section: 11
 *
 *   Academic Honesty Pledge:
 *   "I have neither given nor received any unauthorized aid on this piece of work."
 *
-*   Signed ______  Date _______
+*   Signed Audrey Tan Date Nov 16 2023
 * */
+
+import static javax.swing.text.html.HTML.Attribute.N;
 
 public class Main {
 
-    /** 1. Write a method called numberOfVowels()
-           Given a string, **numberOfVowels** will return the number of vowels in that string. 
-           Consider a, e, i, o, u as vowels.
-     **/
-    
+    public static int numberOfVowels(String one) {
+        String vowels = "aeiou";
+        int count = 0;
+        for (int i=0; i < one.length(); i++) {
+            char ch = one.charAt(i);
+            if (vowels.contains("" + ch); {
+                count++;
+            }
+        }
+        return count;
+    }
 
-    /** 2. Write a method called notDivisibleBy235()
-           Given a number N, **notDivisibleBy235** will return the number of natural numbers 
-           from one to N that are not divisible by any of the factors [2, 3, 5].
+    public static int notDivisibleBy235(int i) {
+            int count = 0;
+            for (int i = 1; i <= N; i++) {
+                if (i % 2 != 0 && i % 3 != 0 && i % 5 != 0) {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
 
-     Let's take N=5 as an example:
-        1 - not divisible by 2, 3, or 5
-        2 - divisible by 2
-        3 - divisible by 3
-        4 - divisible by 2
-        5 - divisible by 5
-     Answer: 1 (only one number isn't divisible by any of 2, 3, 5) **/
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        System.out.println(numberOfVowels(inputString)); // Output: 3
+
+        int N = 5;
+        int result = notDivisibleBy235(N);
+        System.out.println("Answer: " + result); // Output: 1
+
+        String inputString1 = "the-stealth-warrior";
+        String inputString2 = "The_Stealth_Warrior";
+        String inputString3 = "The_Stealth-Warrior";
+
+        System.out.println(camelCaseMe(inputString1)); // Output: theStealthWarrior
+        System.out.println(camelCaseMe(inputString2)); // Output: TheStealthWarrior
+        System.out.println(camelCaseMe(inputString3)); // Output: TheStealthWarrior
+    }
 
 
-    /** 3. Write a method called camelCaseMe()
-           Given a string, this method converts dash/underscore delimited words into camel casing. 
 
-     * The first word should be capitalized only if the original word was capitalized
-     * The next words should always be capitalized.
-     Examples
-     "the-stealth-warrior" gets converted to "theStealthWarrior"
-     "The_Stealth_Warrior" gets converted to "TheStealthWarrior"
-     "The_Stealth-Warrior" gets converted to "TheStealthWarrior" **/
+    public static String camelCaseMe(String string) {
+        StringBuilder result = new StringBuilder();
+        boolean capitalizeNext = false;
 
+        for (int i = 0; i < string.length(); i++) {
+            char currentChar = string.charAt(i);
+            if (currentChar == '-' || currentChar == '_') {
+                capitalizeNext = true;
+            } else {
+                if (capitalizeNext) {
+                    result.append(Character.toUpperCase(currentChar));
+                    capitalizeNext = false;
+                } else {
+                    result.append(Character.toLowerCase(currentChar));
+                }
+            }
+        }
 
+        return result.toString();
+    }
 }
